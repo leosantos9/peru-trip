@@ -1,0 +1,58 @@
+[
+  {
+    "id": "machu",
+    "file": "machu-picchu.jpg",
+    "title": "Machu Picchu, among the clouds",
+    "alt": "Machu Picchu terraces beneath cloud-wrapped mountains",
+    "day": 7,
+    "caption": "The citadel and its mountain landscape · October 7, 2026"
+  },
+  {
+    "id": "cusco",
+    "file": "cusco-san-blas.jpg",
+    "title": "Above the rooftops of Cusco",
+    "alt": "The red-tiled roofs of Cusco seen from the San Blas viewpoint",
+    "day": 3,
+    "caption": "Mirador de San Blas · October 3, 2026"
+  },
+  {
+    "id": "huchuy",
+    "file": "huchuy-picchu.jpg",
+    "title": "Huchuy Picchu · 2,542 m",
+    "alt": "A traveler at the Huchuy Picchu summit sign, with Machu Picchu below",
+    "day": 7,
+    "caption": "Our summit photograph from circuit 3D · October 7, 2026"
+  },
+  {
+    "id": "valley",
+    "file": "machupicchu-valley.jpg",
+    "title": "A river far below",
+    "alt": "A river winding between steep forested mountains near Machu Picchu",
+    "day": 7,
+    "caption": "The mountain landscape around Machu Picchu · October 7, 2026"
+  },
+  {
+    "id": "lima",
+    "file": "lima-larcomar.jpg",
+    "title": "Blue hour on the Costa Verde",
+    "alt": "The Pacific coast and city lights, seen from Larcomar at dusk",
+    "day": 16,
+    "caption": "The view from Larcomar · Lima, October 16, 2026"
+  },
+  {
+    "id": "plaza",
+    "file": "cusco-plaza.jpg",
+    "title": "Our first afternoon in Cusco",
+    "alt": "An Inca statue above the fountain in Cusco’s Plaza de Armas",
+    "day": 3,
+    "caption": "Plaza de Armas · October 3, 2026"
+  },
+  {
+    "id": "pachacutec",
+    "file": "aguas-calientes.jpg",
+    "title": "Aguas Calientes after dark",
+    "alt": "The illuminated Pachacutec statue in the main square of Aguas Calientes",
+    "day": 6,
+    "caption": "Machu Picchu Pueblo · October 6, 2026"
+  }
+]

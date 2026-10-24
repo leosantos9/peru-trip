@@ -1,0 +1,29 @@
+name: Publish to Hostinger VPS
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/build.py && python scripts/validate.py
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.HOSTINGER_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Upload the built website
+        env:
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          USER: ${{ secrets.HOSTINGER_USER }}
+          DEPLOY_PATH: ${{ secrets.HOSTINGER_PATH }}
+        run: rsync -az --delete dist/ "$USER@$HOST:$DEPLOY_PATH/"
