@@ -1,163 +1,75 @@
-"""Build the Peru journal twice.
-
-dist/                 small index.html plus separate assets, for hosting
-dist-offline/         one self-contained HTML file, for opening offline
-"""
 from pathlib import Path
 import base64, json, re, shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-HERO_NAME = "hero-cusco-procession.mp4"
-
-PORTABILITY_HOSTED = (
-    "Photos and the opening video load as separate files, so the first page stays small "
-    "and a return visit can reuse what the browser already saved. "
-    "Detailed street tiles and external links require internet."
-)
-PORTABILITY_OFFLINE = (
-    "The journal, original photos and atlas geography are embedded in this HTML file, "
-    "so it opens without a web server. "
-    "Detailed street tiles and external links require internet."
-)
+DIST, OFFLINE = ROOT / 'dist', ROOT / 'dist-offline'
 
 def read(path):
-    return (ROOT / path).read_text(encoding="utf-8")
+    return (ROOT / path).read_text(encoding='utf-8')
 
 def load(path):
     return json.loads(read(path))
 
-def photo_mime(path):
-    return "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
-
-def safe_filename(name):
-    if not name or Path(name).name != name or "/" in name or "\\" in name:
-        raise SystemExit(f"Photo filename must be a plain file name: {name}")
-    return name
-
-def build_photos(manifest, embed):
+def photo_objects(manifest, embedded):
     photos = {}
-    files = []
-    seen = set()
     for entry in manifest:
-        key = entry.get("id")
-        filename = safe_filename(entry.get("file"))
-        path = ROOT / "content" / "photos" / filename
-        if not key or key in photos or not path.is_file():
-            raise SystemExit(f"Photo entry is incomplete or missing: {key or filename}")
-        seen.add(filename)
-        item = {k: v for k, v in entry.items() if k not in ("id", "file")}
-        if embed:
-            encoded = base64.b64encode(path.read_bytes()).decode("ascii")
-            item["src"] = f"data:{photo_mime(path)};base64,{encoded}"
+        key, filename = entry.get('id'), entry.get('file')
+        path = ROOT / 'content/photos' / str(filename)
+        if not key or not filename or not path.is_file():
+            raise SystemExit(f'Photo entry is incomplete or missing: {key or filename}')
+        item = {k: v for k, v in entry.items() if k not in ('id', 'file')}
+        if embedded:
+            mime = 'image/webp' if path.suffix.lower() == '.webp' else 'image/png' if path.suffix.lower() == '.png' else 'image/jpeg'
+            item['src'] = f'data:{mime};base64,' + base64.b64encode(path.read_bytes()).decode()
         else:
-            item["src"] = f"assets/photos/{filename}"
+            item['src'] = 'assets/photos/' + filename
         photos[key] = item
-        files.append(path)
-    if "machu" not in photos:
-        raise SystemExit("photos.json is missing the cover photo id 'machu'.")
-    return photos, files
+    return photos
 
 def fill(template, values):
-    tokens = set(re.findall(r"__([A-Z0-9_]+)__", template))
-    missing = sorted(tokens - set(values))
-    if missing:
-        raise SystemExit("Unresolved template tokens: " + ", ".join(missing))
-    page = template
     for name, value in values.items():
-        page = page.replace(f"__{name}__", value)
-    return page
-
-def data_script(config, trip, photos, geography):
-    return (
-        "const SITE_CONFIG=" + json.dumps(config, ensure_ascii=False, separators=(",", ":")) + ";\n"
-        "const TRIP=" + json.dumps(trip, ensure_ascii=False, separators=(",", ":")) + ";\n"
-        "const PHOTOS=" + json.dumps(photos, ensure_ascii=False, separators=(",", ":")) + ";\n"
-        "const GEOGRAPHY=" + geography.strip() + ";\n"
-    )
-
-def write_page(path, html):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(html, encoding="utf-8")
-    return path.stat().st_size
-
-def reset_dir(path):
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True)
+        template = template.replace('__' + name + '__', value)
+    unresolved = re.findall(r'__[A-Z_]+__', template)
+    if unresolved:
+        raise SystemExit('Unresolved template tokens: ' + ', '.join(unresolved))
+    return template
 
 def main():
-    trip = load("content/trip.json")
-    manifest = load("content/photos.json")
-    config = load("content/site.json")
-    required = {"places", "days", "chapters", "route"}
-    missing = required - set(trip)
-    if missing:
-        raise SystemExit("trip.json is missing: " + ", ".join(sorted(missing)))
-    if len(trip["days"]) != 16:
-        raise SystemExit(f"Expected 16 days, found {len(trip['days'])}")
-
-    video = ROOT / "content" / "videos" / HERO_NAME
+    trip, manifest, config = load('content/trip.json'), load('content/photos.json'), load('content/site.json')
+    if len(trip.get('days', [])) != 16:
+        raise SystemExit('Expected 16 days')
+    video = ROOT / 'content/videos/hero-cusco-procession.mp4'
     if not video.is_file():
-        raise SystemExit(f"Missing hero video: content/videos/{HERO_NAME}")
+        raise SystemExit(f'Missing hero video: {video}')
+    template = read('src/index.template.html')
+    assets = DIST / 'assets'
+    DIST.mkdir(exist_ok=True)
+    assets.mkdir(exist_ok=True)
+    shutil.copytree(ROOT / 'content/photos', assets / 'photos', dirs_exist_ok=True)
+    (assets / 'videos').mkdir(exist_ok=True)
+    shutil.copy2(video, assets / 'videos/hero-cusco-procession.mp4')
+    for source, target in [('src/styles.css','app.css'), ('src/app.js','app.js'), ('src/vendor/leaflet.css','leaflet.css'), ('src/vendor/leaflet.js','leaflet.js')]:
+        shutil.copy2(ROOT / source, assets / target)
+    common = 'const SITE_CONFIG=' + json.dumps(config, ensure_ascii=False, separators=(',', ':')) + ';const TRIP=' + json.dumps(trip, ensure_ascii=False, separators=(',', ':')) + ';const PHOTOS='
+    geography = ';const GEOGRAPHY=' + read('src/geography.json') + ';'
+    (assets / 'data.js').write_text(common + json.dumps(photo_objects(manifest, False), ensure_ascii=False, separators=(',', ':')) + geography, encoding='utf-8')
+    hosted = template.replace('<style>__LEAFLET_CSS__</style><style>__DESIGN__</style>', '<link rel="stylesheet" href="assets/leaflet.css"><link rel="stylesheet" href="assets/app.css">')
+    hosted = hosted.replace('<script>__LEAFLET_JS__</script><script>const TRIP=__DATA__;const PHOTOS=__PHOTOS__;const GEOGRAPHY=__GEOGRAPHY__;</script><script>__APP_JS__</script>', '<script src="assets/leaflet.js"></script><script src="assets/data.js"></script><script src="assets/app.js"></script>')
+    hosted = fill(hosted, {'HERO_VIDEO': 'assets/videos/hero-cusco-procession.mp4'})
+    (DIST / 'index.html').write_text(hosted, encoding='utf-8')
+    encoded_video = 'data:video/mp4;base64,' + base64.b64encode(video.read_bytes()).decode()
+    offline = fill(template, {
+        'LEAFLET_CSS': read('src/vendor/leaflet.css'), 'DESIGN': read('src/styles.css'),
+        'LEAFLET_JS': read('src/vendor/leaflet.js'),
+        'DATA': json.dumps(trip, ensure_ascii=False, separators=(',', ':')),
+        'PHOTOS': json.dumps(photo_objects(manifest, True), ensure_ascii=False, separators=(',', ':')),
+        'GEOGRAPHY': read('src/geography.json'), 'APP_JS': read('src/app.js'),
+        'HERO_VIDEO': encoded_video,
+    }).replace('const TRIP=', 'const SITE_CONFIG=' + json.dumps(config, ensure_ascii=False, separators=(',', ':')) + ';const TRIP=', 1)
+    OFFLINE.mkdir(exist_ok=True)
+    (OFFLINE / 'peru-journal.html').write_text(offline, encoding='utf-8')
+    print(f'Built hosted site: dist/index.html ({(DIST / "index.html").stat().st_size / 1024:.1f} KB HTML)')
+    print(f'Built offline edition: dist-offline/peru-journal.html ({(OFFLINE / "peru-journal.html").stat().st_size / 1024 / 1024:.2f} MB)')
 
-    template = read("src/index.template.html")
-    leaflet_css = read("src/vendor/leaflet.css")
-    design = read("src/styles.css")
-    leaflet_js = read("src/vendor/leaflet.js")
-    app_js = read("src/app.js")
-    geography = read("src/geography.json")
-
-    hosted_photos, photo_files = build_photos(manifest, embed=False)
-    dist = ROOT / "dist"
-    reset_dir(dist)
-    assets = dist / "assets"
-    (assets / "photos").mkdir(parents=True)
-    (assets / "app.css").write_text(design, encoding="utf-8")
-    (assets / "leaflet.css").write_text(leaflet_css, encoding="utf-8")
-    (assets / "app.js").write_text(app_js, encoding="utf-8")
-    (assets / "leaflet.js").write_text(leaflet_js, encoding="utf-8")
-    (assets / "data.js").write_text(
-        data_script(config, trip, hosted_photos, geography), encoding="utf-8"
-    )
-    shutil.copyfile(video, assets / HERO_NAME)
-    for path in photo_files:
-        shutil.copyfile(path, assets / "photos" / path.name)
-    nojekyll = ROOT / ".nojekyll"
-    if nojekyll.is_file():
-        shutil.copyfile(nojekyll, dist / ".nojekyll")
-
-    hosted_name = Path(config.get("outputFile") or "index.html").name
-    hosted_html = fill(template, {
-        "STYLES": '<link rel="stylesheet" href="assets/leaflet.css"><link rel="stylesheet" href="assets/app.css">',
-        "HERO_VIDEO": f"assets/{HERO_NAME}",
-        "PORTABILITY_NOTE": PORTABILITY_HOSTED,
-        "SCRIPTS": '<script src="assets/leaflet.js"></script><script src="assets/data.js"></script><script src="assets/app.js"></script>',
-    })
-    hosted_path = dist / hosted_name
-    hosted_size = write_page(hosted_path, hosted_html)
-
-    offline_photos, _ = build_photos(manifest, embed=True)
-    video_uri = "data:video/mp4;base64," + base64.b64encode(video.read_bytes()).decode("ascii")
-    offline_html = fill(template, {
-        "STYLES": f"<style>{leaflet_css}</style><style>{design}</style>",
-        "HERO_VIDEO": video_uri,
-        "PORTABILITY_NOTE": PORTABILITY_OFFLINE,
-        "SCRIPTS": (
-            f"<script>{leaflet_js}</script>"
-            f"<script>{data_script(config, trip, offline_photos, geography)}</script>"
-            f"<script>{app_js}</script>"
-        ),
-    })
-    offline_dir = ROOT / "dist-offline"
-    reset_dir(offline_dir)
-    offline_path = offline_dir / "peru-journal.html"
-    offline_size = write_page(offline_path, offline_html)
-
-    print(
-        f"Built {hosted_path.relative_to(ROOT)} ({hosted_size/1024:.1f} KB) "
-        f"with {len(photo_files)} photos and the hero video as separate files"
-    )
-    print(f"Built {offline_path.relative_to(ROOT)} ({offline_size/1024/1024:.2f} MB) self-contained offline copy")
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
