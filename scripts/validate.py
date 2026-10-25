@@ -3,6 +3,7 @@ import json, re, sys
 ROOT = Path(__file__).resolve().parents[1]
 trip = json.loads((ROOT / 'content/trip.json').read_text(encoding='utf-8'))
 photos = json.loads((ROOT / 'content/photos.json').read_text(encoding='utf-8'))
+videos = json.loads((ROOT / 'content/videos.json').read_text(encoding='utf-8'))
 errors = []
 if [d.get('date') for d in trip.get('days', [])] != list(range(3, 19)):
     errors.append('Days must run from October 3 through 18.')
@@ -23,6 +24,22 @@ for photo in photos:
     for path in [ROOT / 'content/photos' / photo.get('file', ''), ROOT / 'dist/assets/photos' / photo.get('file', '')]:
         if not path.is_file():
             errors.append(f'Missing photo: {path}')
+seen_videos = set()
+for clip in videos:
+    if clip.get('id') in seen_videos:
+        errors.append(f'Duplicate video ID: {clip.get("id")}')
+    seen_videos.add(clip.get('id'))
+    for field in ('id','file','poster','day','title','caption','alt'):
+        if not clip.get(field):
+            errors.append(f'Video {clip.get("id")}: missing {field}')
+    if clip.get('day') not in range(3,19):
+        errors.append(f'Video {clip.get("id")}: invalid day')
+    if clip.get('place') and clip['place'] not in places:
+        errors.append(f'Video {clip.get("id")}: unknown place')
+    for name in (clip.get('file',''), clip.get('poster','')):
+        for path in (ROOT / 'content/videos' / name, ROOT / 'dist/assets/videos' / name):
+            if not path.is_file():
+                errors.append(f'Missing video asset: {path}')
 required = ['dist/index.html', 'dist/assets/app.css', 'dist/assets/app.js',
             'dist/assets/data.js', 'dist/assets/leaflet.css', 'dist/assets/leaflet.js',
             'dist/assets/videos/hero-cusco-procession.mp4', 'dist-offline/peru-journal.html']
@@ -31,7 +48,7 @@ for name in required:
         errors.append(f'Missing generated file: {name}')
 for name in ['dist/index.html', 'dist-offline/peru-journal.html']:
     path = ROOT / name
-    if path.is_file() and re.search(r'__(?:DATA|DESIGN|PHOTOS|APP_JS|LEAFLET_JS|HERO_VIDEO)__', path.read_text(encoding='utf-8')):
+    if path.is_file() and re.search(r'__(?:DATA|DESIGN|PHOTOS|VIDEOS|APP_JS|LEAFLET_JS|HERO_VIDEO)__', path.read_text(encoding='utf-8')):
         errors.append(f'Unresolved template value in {name}')
 hosted = ROOT / 'dist/index.html'
 if hosted.is_file():
@@ -44,4 +61,4 @@ if hosted.is_file():
 if errors:
     print('\n'.join('ERROR: ' + error for error in errors))
     sys.exit(1)
-print(f'Validated fast hosted build and offline edition: {len(trip["days"])} days, {len(places)} places and {len(photos)} photos.')
+print(f'Validated fast hosted build and offline edition: {len(trip["days"])} days, {len(places)} places, {len(photos)} photos and {len(videos)} videos.')

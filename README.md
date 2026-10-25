@@ -8,9 +8,9 @@ A maintainable source project for the Peru travel journal. Editable JSON, photog
 
 1. Install [Python](https://www.python.org/downloads/) and [GitHub Desktop](https://desktop.github.com/download/). During Python installation, enable **Add Python to PATH**.
 2. Clone this repository with GitHub Desktop.
-3. Edit itinerary content in `content/trip.json` or replace files in `content/photos/`. See `CONTENT_GUIDE.md`.
+3. Edit itinerary content in `content/trip.json`, photo captions in `content/photos.json`, or video captions in `content/videos.json`. See `CONTENT_GUIDE.md`.
 4. Double-click `build.bat`.
-5. Double-click `preview.bat`. Your browser opens `http://localhost:8000`. Keep the command window open while reviewing.
+5. Double-click `preview.bat`. It rebuilds and opens `http://127.0.0.1:8765/`. Keep the command window open while reviewing.
 6. In GitHub Desktop, review the changes, write a short summary, click **Commit to main**, then **Push origin**.
 
 ### macOS/Linux
@@ -20,7 +20,7 @@ A maintainable source project for the Peru travel journal. Editable JSON, photog
 ./preview.sh
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://127.0.0.1:8765/`.
 
 ## Repository structure
 
@@ -28,8 +28,9 @@ Then open `http://localhost:8000`.
 content/
   trip.json          itinerary, places, chapters and route
   photos.json        photo titles, captions and day links
+  videos.json        video titles, captions and day links
   photos/            original image files
-  videos/            optimized hero video
+  videos/            optimized clips, poster images and hero video
 src/
   index.template.html
   styles.css

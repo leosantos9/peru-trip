@@ -28,6 +28,12 @@ Use web-friendly JPEG or WebP files when possible. Keep filenames lowercase, des
 
 Replace `content/videos/hero-cusco-procession.mp4` with another web-optimized MP4 using the same filename, then run `build.bat`. H.264 video without audio provides broad browser support and keeps loading fast. A short 1080p-or-smaller clip is ideal.
 
+## Add a trip video
+
+Put a web-optimized MP4 and a JPEG poster frame in `content/videos/`. Add one record to `content/videos.json` with a unique `id`, `file`, `poster`, `day` (3–18), `title`, `caption` and descriptive `alt` text. `place` is optional; use an existing place ID from `content/trip.json` only when the location is certain. The clip will automatically appear in that day's Moments in motion section and the gallery. The video loads only when opened.
+
+Preserve the original camera file outside the repository. The files in `content/videos/` are smaller publishing copies. Run `build.bat` and `scripts/validate.py` after editing.
+
 ## Change the visual design
 
 Edit `src/styles.css`. Behavior lives in `src/app.js`; page structure lives in `src/index.template.html`.
@@ -39,6 +45,6 @@ The MapTiler browser key is in `content/site.json`. Browser map keys are visible
 ## Generated editions
 
 - `dist/` is the fast website published by GitHub Pages or Hostinger. Its images, video, CSS and JavaScript load as separate files so the browser can cache them.
-- `dist-offline/peru-journal.html` is one self-contained file for sharing or keeping offline. It is larger because every photograph and the video are embedded.
+- `dist-offline/peru-journal.html` is one self-contained file for sharing or keeping offline. It is much larger because every photograph and video is embedded.
 
 Always edit files under `content/` or `src/`, then rebuild. Do not edit either generated edition directly.

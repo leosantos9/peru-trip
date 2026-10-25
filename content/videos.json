@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ollantaytambo-view",
+    "file": "05-ollantaytambo-valley.mp4",
+    "poster": "05-ollantaytambo-valley.jpg",
+    "day": 5,
+    "place": "ollanta",
+    "title": "Ollantaytambo above the valley",
+    "caption": "A sweeping view from the terraces across the town and Sacred Valley.",
+    "alt": "Panorama from Ollantaytambo terraces across the town and valley"
+  },
+  {
+    "id": "andahuaylillas-gathering",
+    "file": "08-andahuaylillas-church.mp4",
+    "poster": "08-andahuaylillas-church.jpg",
+    "day": 8,
+    "place": "andahua",
+    "title": "Gathering outside Andahuaylillas church",
+    "caption": "A public gathering and dance outside the church during our South Valley visit.",
+    "alt": "People dancing and gathering outside a church in Andahuaylillas"
+  },
+  {
+    "id": "cusco-plaza-dance",
+    "file": "09-cusco-plaza-dancers.mp4",
+    "poster": "09-cusco-plaza-dancers.jpg",
+    "day": 9,
+    "place": "plaza_cusco",
+    "title": "Dancing in Cusco’s Plaza de Armas",
+    "caption": "A lively afternoon performance filled the plaza during our final Cusco wander.",
+    "alt": "Groups dancing in colorful costumes across Cusco's Plaza de Armas"
+  },
+  {
+    "id": "arequipa-procession",
+    "file": "11-arequipa-procession.mp4",
+    "poster": "11-arequipa-procession.jpg",
+    "day": 11,
+    "place": null,
+    "title": "A procession in Arequipa",
+    "caption": "A religious procession moves through Arequipa’s Plaza de Armas.",
+    "alt": "Procession before the arcades in Arequipa's Plaza de Armas"
+  },
+  {
+    "id": "ballestas-boat",
+    "file": "15-ballestas-boat.mp4",
+    "poster": "15-ballestas-boat.jpg",
+    "day": 15,
+    "place": "ballestas",
+    "title": "By boat around the Ballestas Islands",
+    "caption": "Sea and rocky islands seen from the boat on our morning excursion.",
+    "alt": "Rocky Ballestas Islands seen from a moving boat"
+  },
+  {
+    "id": "paracas-coast",
+    "file": "15-paracas-coast.mp4",
+    "poster": "15-paracas-coast.jpg",
+    "day": 15,
+    "place": "reserva",
+    "title": "The Paracas coastline",
+    "caption": "A quiet sweep of desert, bay and ocean during our reserve visit.",
+    "alt": "Coastline and desert at Paracas National Reserve"
+  },
+  {
+    "id": "miraflores-dusk",
+    "file": "16-miraflores-coast-evening.mp4",
+    "poster": "16-miraflores-coast-evening.jpg",
+    "day": 16,
+    "place": "larcomar",
+    "title": "Miraflores by the Pacific at dusk",
+    "caption": "Coastal lights and ocean from the cliffs near Larcomar.",
+    "alt": "Pacific coast and city lights from Miraflores at dusk"
+  }
+]
