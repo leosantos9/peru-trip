@@ -22,6 +22,7 @@ def main():
   'LEAFLET_CSS':read('src/vendor/leaflet.css'),'DESIGN':read('src/styles.css'),
   'LEAFLET_JS':read('src/vendor/leaflet.js'),'DATA':json.dumps(trip,ensure_ascii=False,separators=(',',':')),
   'PHOTOS':json.dumps(photos,ensure_ascii=False,separators=(',',':')),
+  'HERO_VIDEO':'data:video/mp4;base64,'+base64.b64encode((ROOT/'content/videos/hero-cusco-procession.mp4').read_bytes()).decode(),
   'GEOGRAPHY':read('src/geography.json'),'APP_JS':read('src/app.js')
  }
  for name,value in values.items(): page=page.replace('__'+name+'__',value)

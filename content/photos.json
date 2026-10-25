@@ -1,58 +1,354 @@
 [
   {
-    "id": "machu",
-    "file": "machu-picchu.jpg",
-    "title": "Machu Picchu, among the clouds",
-    "alt": "Machu Picchu terraces beneath cloud-wrapped mountains",
-    "day": 7,
-    "caption": "The citadel and its mountain landscape · October 7, 2026"
+    "id": "plaza",
+    "file": "03-cusco-plaza-de-armas.jpg",
+    "title": "Our first afternoon in Cusco",
+    "alt": "The Inca fountain in Cusco’s Plaza de Armas beneath a clear blue sky",
+    "day": 3,
+    "caption": "Plaza de Armas · October 3, 2026"
   },
   {
     "id": "cusco",
-    "file": "cusco-san-blas.jpg",
+    "file": "03-cusco-san-blas.jpg",
     "title": "Above the rooftops of Cusco",
     "alt": "The red-tiled roofs of Cusco seen from the San Blas viewpoint",
     "day": 3,
     "caption": "Mirador de San Blas · October 3, 2026"
   },
   {
-    "id": "huchuy",
-    "file": "huchuy-picchu.jpg",
-    "title": "Huchuy Picchu · 2,542 m",
-    "alt": "A traveler at the Huchuy Picchu summit sign, with Machu Picchu below",
+    "id": "cusco-lanes",
+    "file": "03-cusco-stone-lanes.jpg",
+    "title": "The lanes of old Cusco",
+    "alt": "A narrow stone-paved lane lined with white walls and tiled roofs in Cusco",
+    "day": 3,
+    "caption": "Walking through the historic center · October 3, 2026"
+  },
+  {
+    "id": "san-blas-panorama",
+    "file": "03-san-blas-panorama.jpg",
+    "title": "Cusco from San Blas",
+    "alt": "A panoramic view across Cusco’s red-tiled roofs from the San Blas viewpoint",
+    "day": 3,
+    "caption": "Mirador de San Blas · October 3, 2026"
+  },
+  {
+    "id": "cusco-morning",
+    "file": "04-cusco-morning.jpg",
+    "title": "Morning in the imperial city",
+    "alt": "Cusco’s colonial arcades and flower-filled Plaza de Armas in the morning",
+    "day": 4,
+    "caption": "Before the four-site circuit · October 4, 2026"
+  },
+  {
+    "id": "cusco-golden-hour",
+    "file": "04-cusco-plaza-golden-hour.jpg",
+    "title": "Golden hour in Cusco",
+    "alt": "The Inca fountain silhouetted against the late-afternoon sun in Cusco’s Plaza de Armas",
+    "day": 4,
+    "caption": "Plaza de Armas · October 4, 2026"
+  },
+  {
+    "id": "moray-evening",
+    "file": "05-moray-evening.jpg",
+    "title": "The circles of Moray",
+    "alt": "Concentric Inca terraces at Moray in the late-afternoon light",
+    "day": 5,
+    "caption": "Moray · October 5, 2026"
+  },
+  {
+    "id": "ollanta-panorama",
+    "file": "05-ollantaytambo-panorama.jpg",
+    "title": "Ollantaytambo between the mountains",
+    "alt": "The archaeological site and town of Ollantaytambo set between steep Andean mountains",
+    "day": 5,
+    "caption": "Ollantaytambo · October 5, 2026"
+  },
+  {
+    "id": "ollanta-wall",
+    "file": "05-ollantaytambo-stonework.jpg",
+    "title": "Stonework at Ollantaytambo",
+    "alt": "A traveler beside a precisely fitted Inca stone wall at Ollantaytambo",
+    "day": 5,
+    "caption": "Ollantaytambo · October 5, 2026"
+  },
+  {
+    "id": "ollanta-temple",
+    "file": "05-ollantaytambo-temple.jpg",
+    "title": "At the Temple Hill",
+    "alt": "Stone enclosures and mountains at the Ollantaytambo archaeological site",
+    "day": 5,
+    "caption": "Ollantaytambo · October 5, 2026"
+  },
+  {
+    "id": "ollanta-terraces",
+    "file": "05-ollantaytambo-terraces.jpg",
+    "title": "Terraces above the valley",
+    "alt": "The steep agricultural terraces of Ollantaytambo framed by Andean mountains",
+    "day": 5,
+    "caption": "Ollantaytambo · October 5, 2026"
+  },
+  {
+    "id": "pachacutec",
+    "file": "06-aguas-calientes.jpg",
+    "title": "Aguas Calientes after dark",
+    "alt": "The illuminated Pachacútec statue in the main square of Aguas Calientes",
+    "day": 6,
+    "caption": "Machu Picchu Pueblo · October 6, 2026"
+  },
+  {
+    "id": "train-valley",
+    "file": "06-train-through-sacred-valley.jpg",
+    "title": "Into the mountains by rail",
+    "alt": "Railway tracks running through the green Sacred Valley toward Aguas Calientes",
+    "day": 6,
+    "caption": "The train journey from Poroy · October 6, 2026 · still from video"
+  },
+  {
+    "id": "machu",
+    "file": "07-machu-picchu-clouds.jpg",
+    "title": "Machu Picchu, among the clouds",
+    "alt": "Machu Picchu terraces beneath cloud-wrapped mountains",
     "day": 7,
-    "caption": "Our summit photograph from circuit 3D · October 7, 2026"
+    "caption": "The citadel and its mountain landscape · October 7, 2026"
+  },
+  {
+    "id": "machu-first-light",
+    "file": "07-machu-picchu-first-light.jpg",
+    "title": "First light over Machu Picchu",
+    "alt": "The Inca citadel and green terraces under breaking morning clouds",
+    "day": 7,
+    "caption": "Circuit 2B in the early morning · October 7, 2026"
+  },
+  {
+    "id": "machu-stone",
+    "file": "07-machu-picchu-stonework.jpg",
+    "title": "Stone and mountain",
+    "alt": "Precisely built Inca terraces and stone structures at Machu Picchu",
+    "day": 7,
+    "caption": "Inside the citadel · October 7, 2026"
+  },
+  {
+    "id": "machu-sunbreak",
+    "file": "07-machu-picchu-sunbreak.jpg",
+    "title": "Sunlight through the Andes",
+    "alt": "Sunbeams breaking through clouds above the Machu Picchu terraces",
+    "day": 7,
+    "caption": "Morning on circuit 2B · October 7, 2026"
+  },
+  {
+    "id": "machu-rays",
+    "file": "07-machu-picchu-sunrays.jpg",
+    "title": "Terraces in the morning light",
+    "alt": "Sun rays breaking through clouds above the green terraces and mountains of Machu Picchu",
+    "day": 7,
+    "caption": "Machu Picchu · October 7, 2026"
   },
   {
     "id": "valley",
-    "file": "machupicchu-valley.jpg",
+    "file": "07-urubamba-valley.jpg",
     "title": "A river far below",
-    "alt": "A river winding between steep forested mountains near Machu Picchu",
+    "alt": "The Urubamba River winding between steep forested mountains near Machu Picchu",
     "day": 7,
     "caption": "The mountain landscape around Machu Picchu · October 7, 2026"
   },
   {
+    "id": "cusco-night",
+    "file": "08-cusco-plaza-night.jpg",
+    "title": "Cusco after dark",
+    "alt": "The illuminated Plaza de Armas in Cusco at night",
+    "day": 8,
+    "caption": "Cusco · October 8, 2026"
+  },
+  {
+    "id": "tipon-wide",
+    "file": "08-tipon-terraces.jpg",
+    "title": "Water terraces at Tipón",
+    "alt": "Broad green terraces and stone waterworks at the Inca site of Tipón",
+    "day": 8,
+    "caption": "Tipón · October 8, 2026"
+  },
+  {
+    "id": "tipon-water",
+    "file": "08-tipon-water-channels.jpg",
+    "title": "An Inca language of water",
+    "alt": "Precisely built stone channels carrying water through Tipón",
+    "day": 8,
+    "caption": "Tipón · October 8, 2026"
+  },
+  {
+    "id": "cusco-sunset",
+    "file": "09-cusco-plaza-sunset.jpg",
+    "title": "A final sunset in Cusco",
+    "alt": "Late-afternoon sunlight across Cusco’s Plaza de Armas and surrounding hills",
+    "day": 9,
+    "caption": "Our last afternoon in Cusco · October 9, 2026"
+  },
+  {
+    "id": "cusco-procession",
+    "file": "09-cusco-procession.jpg",
+    "title": "A procession fills the plaza",
+    "alt": "Dancers and spectators gathered in Cusco’s Plaza de Armas for a procession",
+    "day": 9,
+    "caption": "Our last afternoon in Cusco · October 9, 2026 · still from video"
+  },
+  {
+    "id": "uros-island",
+    "file": "10-uros-island-life.jpg",
+    "title": "Life made from totora",
+    "alt": "Homes and residents on a floating island made from totora reeds",
+    "day": 10,
+    "caption": "Uros · October 10, 2026"
+  },
+  {
+    "id": "uros-boat",
+    "file": "10-uros-reed-boat.jpg",
+    "title": "Across the floating islands",
+    "alt": "A traditional reed boat on Lake Titicaca beside the Uros islands",
+    "day": 10,
+    "caption": "Uros · October 10, 2026"
+  },
+  {
+    "id": "arequipa-plaza",
+    "file": "11-arequipa-plaza.jpg",
+    "title": "The White City",
+    "alt": "Palm trees, arcades and white-stone architecture in Arequipa’s Plaza de Armas",
+    "day": 11,
+    "caption": "Arequipa · October 11, 2026"
+  },
+  {
+    "id": "arequipa-sunset",
+    "file": "11-arequipa-sunset.jpg",
+    "title": "Volcano light at sunset",
+    "alt": "Arequipa’s rooftops and cathedral towers beneath a pink Andean sunset",
+    "day": 11,
+    "caption": "Arequipa · October 11, 2026"
+  },
+  {
+    "id": "santa-catalina-courtyard",
+    "file": "11-santa-catalina-courtyard.jpg",
+    "title": "Courtyards of the monastery",
+    "alt": "A sunlit courtyard with palms and white-stone cloisters at Santa Catalina",
+    "day": 11,
+    "caption": "Monasterio de Santa Catalina · October 11, 2026"
+  },
+  {
+    "id": "santa-catalina-lane",
+    "file": "11-santa-catalina-lane.jpg",
+    "title": "Inside Santa Catalina",
+    "alt": "A quiet arched passage inside the Monastery of Santa Catalina",
+    "day": 11,
+    "caption": "Monasterio de Santa Catalina · October 11, 2026"
+  },
+  {
+    "id": "culebrillas-light",
+    "file": "12-culebrillas-light.jpg",
+    "title": "Light in Culebrillas",
+    "alt": "Sunlight entering the pale, sculpted walls of Culebrillas canyon",
+    "day": 12,
+    "caption": "Cañón de Culebrillas · October 12, 2026"
+  },
+  {
+    "id": "culebrillas-walk",
+    "file": "12-culebrillas-walk.jpg",
+    "title": "Between the canyon walls",
+    "alt": "Travelers walking through the narrow volcanic-rock walls of Culebrillas",
+    "day": 12,
+    "caption": "Cañón de Culebrillas · October 12, 2026"
+  },
+  {
+    "id": "sillar-quarry",
+    "file": "12-sillar-quarry.jpg",
+    "title": "Carved from white stone",
+    "alt": "A monumental carved façade in the white volcanic stone quarry outside Arequipa",
+    "day": 12,
+    "caption": "Ruta del Sillar · October 12, 2026"
+  },
+  {
+    "id": "sillar-sculpture",
+    "file": "12-sillar-sculpture.jpg",
+    "title": "Guardian of the quarry",
+    "alt": "A carved figure standing against the open landscape of the Sillar route",
+    "day": 12,
+    "caption": "Ruta del Sillar · October 12, 2026"
+  },
+  {
+    "id": "coastal-road",
+    "file": "13-southern-coastal-road.jpg",
+    "title": "The long road to the coast",
+    "alt": "A desert highway descending toward the Pacific on the route from Arequipa",
+    "day": 13,
+    "caption": "Arequipa to Huacachina · October 13, 2026 · still from video"
+  },
+  {
+    "id": "desert-ridges",
+    "file": "14-huacachina-desert-ridges.jpg",
+    "title": "Desert without end",
+    "alt": "Layered dune ridges stretching toward the horizon in late-afternoon light",
+    "day": 14,
+    "caption": "Huacachina · October 14, 2026"
+  },
+  {
+    "id": "dune-buggy",
+    "file": "14-huacachina-dune-buggy.jpg",
+    "title": "Into the dunes",
+    "alt": "A dune buggy parked high above the sands of Huacachina",
+    "day": 14,
+    "caption": "Huacachina · October 14, 2026"
+  },
+  {
+    "id": "sandboarding",
+    "file": "14-huacachina-sandboarding.jpg",
+    "title": "Sandboarding at sunset",
+    "alt": "A traveler seated on a board on the golden dunes of Huacachina",
+    "day": 14,
+    "caption": "Huacachina · October 14, 2026"
+  },
+  {
+    "id": "ballestas",
+    "file": "15-ballestas-islands.jpg",
+    "title": "Toward the Ballestas Islands",
+    "alt": "A rocky island rising from blue Pacific water, seen from the excursion boat",
+    "day": 15,
+    "caption": "Ballestas Islands · October 15, 2026 · still from video"
+  },
+  {
+    "id": "paracas-bay",
+    "file": "15-paracas-bay.jpg",
+    "title": "The curve of the coast",
+    "alt": "A bright crescent bay between desert dunes and the Pacific",
+    "day": 15,
+    "caption": "Paracas National Reserve · October 15, 2026"
+  },
+  {
+    "id": "paracas-cliffs",
+    "file": "15-paracas-cliffs.jpg",
+    "title": "Where desert meets ocean",
+    "alt": "Golden cliffs and blue Pacific water in the Paracas National Reserve",
+    "day": 15,
+    "caption": "Paracas National Reserve · October 15, 2026"
+  },
+  {
     "id": "lima",
-    "file": "lima-larcomar.jpg",
+    "file": "16-lima-larcomar.jpg",
     "title": "Blue hour on the Costa Verde",
-    "alt": "The Pacific coast and city lights, seen from Larcomar at dusk",
+    "alt": "The Pacific coast and city lights seen from Larcomar at dusk",
     "day": 16,
     "caption": "The view from Larcomar · Lima, October 16, 2026"
   },
   {
-    "id": "plaza",
-    "file": "cusco-plaza.jpg",
-    "title": "Our first afternoon in Cusco",
-    "alt": "An Inca statue above the fountain in Cusco’s Plaza de Armas",
-    "day": 3,
-    "caption": "Plaza de Armas · October 3, 2026"
+    "id": "barranco",
+    "file": "17-barranco-walk.jpg",
+    "title": "A morning in Barranco",
+    "alt": "A colorful pedestrian bridge and leafy streets in Barranco",
+    "day": 17,
+    "caption": "Barranco · October 17, 2026"
   },
   {
-    "id": "pachacutec",
-    "file": "aguas-calientes.jpg",
-    "title": "Aguas Calientes after dark",
-    "alt": "The illuminated Pachacutec statue in the main square of Aguas Calientes",
-    "day": 6,
-    "caption": "Machu Picchu Pueblo · October 6, 2026"
+    "id": "pacific-farewell",
+    "file": "17-pacific-farewell.jpg",
+    "title": "A final Pacific sunset",
+    "alt": "Evening light over the Pacific waves along Lima’s Costa Verde",
+    "day": 17,
+    "caption": "Lima · October 17, 2026"
   }
 ]

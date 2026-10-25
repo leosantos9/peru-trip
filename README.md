@@ -29,6 +29,7 @@ content/
   trip.json          itinerary, places, chapters and route
   photos.json        photo titles, captions and day links
   photos/            original image files
+  videos/            optimized hero video
 src/
   index.template.html
   styles.css
