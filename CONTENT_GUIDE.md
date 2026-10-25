@@ -15,6 +15,8 @@ Preserve commas, quotation marks, and brackets. VS Code highlights JSON mistakes
 
 The easiest method is to replace the existing image in `content/photos/` using the same filename. Then rebuild.
 
+The published site copies that file to `dist/assets/photos/`. Visitors who already have the other photos do not download them again. Because the filename stays the same, the Hostinger cache snippet rechecks the file and fetches the new bytes only.
+
 To add a new photo:
 
 1. Copy it into `content/photos/`.
@@ -29,3 +31,7 @@ Edit `src/styles.css`. Behavior lives in `src/app.js`; page structure lives in `
 ## Maps
 
 The MapTiler browser key is in `content/site.json`. Browser map keys are visible to website visitors, so restrict the key to your domains in MapTiler Cloud. The embedded atlas remains available when street tiles cannot load.
+
+## What the build writes
+
+`dist/` is the website to publish. `dist-offline/peru-journal.html` is the single-file copy for offline use. Edit neither by hand.
